@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>dgist info</title>
+
+  <!-- Bootstrap core CSS -->
+
+  <!--커스텀 css파일-->
+  <link href="css/main.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+  </head>
+
+
+
+
+
+<body>
+
+<div class="container p-4 pt-5 my-3 ">
+  <div class="row">
+    <div id="wd0" class="col-sm-2 bg-white border">loading</div>
+    <div id="wd1" class="col-sm-2 bg-white border">loading</div>
+    <div id="wd2" class="col-sm-2 bg-white border">loading</div>
+    <div id="wd3" class="col-sm-2 bg-white border">loading</div>
+    <div id="wd4" class="col-sm-2 bg-white border">loading</div>
+    <div id="wd5" class="col-sm-2 bg-white border">loading</div>
+
+
+
+  </div>
+</div>
+
+
+  <script>
+
+    function weather_lod() {
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var weather_data=JSON.parse(this.responseText)
+
+        for (i=0;i<6;i++ ){
+          document.getElementById("wd"+i).innerHTML = weather_data[i][0]["date"]+"일 <br>"
+          +weather_data[i][0]["time"]+"시 <br>"+"기온 : "+weather_data[i][0]["T3H"]+"C<br>"+"강수확률 : "+weather_data[i][0]["POP"]+"%<br>"+
+          "강수형태 : " + weather_data[i][0]["PTY"] +"<br>"+
+          "습도 : "+weather_data[i][0]["REH"]+"%<br>"+"하늘상태 : " +  weather_data[i][0]["SKY"]+"<br>"+"풍향 : "+weather_data[i][0]["VEC"]+
+          "<br>"+ "풍속 : "+weather_data[i][0]["WSD"] +"m/s"
+      }
+
+        } else if (this.status == 403){
+          alert("forbiden")
+          } else if (this.status == 403){
+          alert("404 not found")
+          }
+      };
+      xhttp.open("GET", "http://localhost:5000/weather", true);
+      xhttp.send();
+    }
+
+    weather_lod()
+  </script>
+
+
+
+</body>
