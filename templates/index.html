@@ -25,8 +25,24 @@
 
 <body>
 <h1 class="display-4" align="center">dgist info</h1>
-
 <div class="container p-4 pt-2 my-3 ">
+  <div class="row">
+    <div class="col bg-dark border text-white">
+
+
+      <div id="wd_now1" align="center">현재 날씨</div>
+      <img id=wd_now_img width="30" height=auto style="display: block; margin: 0 auto;-webkit-filter: invert(100%);filter: invert(100%);">
+      <div id="wd_now2" align="center" >loading</div>
+
+    </div>
+
+    <div class="col bg-dark border text-white">
+
+    </div>
+
+  </div>
+</div>
+<div class="container ">
   <div class="row">
     <div class="col ">
       <div id="wd00" align="center">loading</div>
@@ -71,7 +87,7 @@
 
         for (i=0;i<5;i++ ){
           document.getElementById("wd"+i).innerHTML ="🌡 "+weather_data[i][0]["T3H"]+"°C<br>"+"🌧 "+weather_data[i][0]["POP"]+"%<br>"+
-          "🌢 : "+weather_data[i][0]["REH"]
+          "🌢 : "+weather_data[i][0]["REH"]+"%"
       }
 
         for (i=0;i<5;i++ ){
@@ -112,7 +128,7 @@
 
         } else if (this.status == 403){
           alert("forbiden")
-          } else if (this.status == 403){
+        } else if (this.status == 404){
           alert("404 not found")
           }
       };
@@ -121,7 +137,56 @@
       xhttp.send();
     }
 
+    function weather_now_lod() {
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var weather_now_data=JSON.parse(this.responseText)
+
+          document.getElementById("wd_now2").innerHTML ="🌡 "+weather_now_data[0][0]["T1H"]+"°C<br>"+"🌢 : "+weather_now_data[0][0]["REH"]+"%"
+
+
+          if (weather_now_data[0][0]["PTY"]==0){
+
+            document.getElementById("wd_now_img").src="https://raw.githubusercontent.com/chanwoo99/info_website/0b3e4bf07678b8f8079a3cf4eb9ffd5fedeaf619/templates/icon/sky_1.svg"
+
+            }
+
+          else{
+            if (weather_now_data[0][0]["PTY"]==1){
+              document.getElementById("wd_now_img").src="https://raw.githubusercontent.com/chanwoo99/info_website/0b3e4bf07678b8f8079a3cf4eb9ffd5fedeaf619/templates/icon/rain_1.svg"
+            }
+            else if (weather_now_data[0][0]["PTY"]==2 || weather_now_data[0][0]["PYT"]==3){
+              document.getElementById("wd_now_img").src="https://raw.githubusercontent.com/chanwoo99/info_website/0b3e4bf07678b8f8079a3cf4eb9ffd5fedeaf619/templates/icon/rain_2_3.svg"
+            }
+            else if (weather_now_data[0][0]["PTY"]==4){
+              document.getElementById("wd_now_img").src="https://raw.githubusercontent.com/chanwoo99/info_website/0b3e4bf07678b8f8079a3cf4eb9ffd5fedeaf619/templates/icon/rain_4.svg"
+            }
+            else if (weather_now_data[0][0]["PTY"]==5){
+              document.getElementById("wd_now_img").src="https://raw.githubusercontent.com/chanwoo99/info_website/0b3e4bf07678b8f8079a3cf4eb9ffd5fedeaf619/templates/icon/rain_5.svg"
+            }
+            else document.getElementById("wd_now_img").src="https://raw.githubusercontent.com/chanwoo99/info_website/0b3e4bf07678b8f8079a3cf4eb9ffd5fedeaf619/templates/icon/rain_6_7.svg"
+
+          }
+
+
+        } else if (this.status == 403){
+          alert("forbiden")
+        } else if (this.status == 404){
+          alert("404 not found")
+          }
+      };
+      xhttp.open("GET", "http://13.209.49.120:8080/weather_now", true);
+      //xhttp.open("GET", "http://localhost:8080/weather_now", true);   //테스트
+      xhttp.send();
+    }
+
+
+
+
     weather_lod()
+    weather_now_lod()
   </script>
 
 

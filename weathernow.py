@@ -49,7 +49,7 @@ def run():
     xmlData=[]
     for i in root[1][1]:
         tmp_data=[]
-        if i[2].text in ["POP","PTY","REH","SKY","T3H","VEC","WSD"]:
+        if i[2].text in ["T1H","REH","PTY","VEC","WSD"]:
             for ii in i:
                 tmp_data.append(ii.text)
 

@@ -3,15 +3,14 @@ from flask_cors import CORS
 import json
 
 import weathermodule
+import weathernow
+import coronadata
 
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/test',methods=['GET'])
-def test():
-    aa= "test"
-    return aa
+
 
 @app.route('/weather',methods=['GET'])
 def weather():
@@ -20,6 +19,20 @@ def weather():
         datasend = json.load(f)
         return jsonify(datasend)
 
+@app.route('/weather_now',methods=['GET'])
+def weather_now():
+    weathernow.run()
+    with open('weather_now.json', 'r') as f:
+        datasend = json.load(f)
+        return jsonify(datasend)
+
+
+@app.route('/coronadata',methods=['GET'])
+def coronadata():
+    coronadata.run()
+    with open('deagu_corona.json', 'r') as f:
+        datasend = json.load(f)
+        return jsonify(datasend)
 
 
 if __name__ == "__main__":
