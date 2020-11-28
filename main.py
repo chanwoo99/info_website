@@ -28,7 +28,7 @@ def weather_now():
 
 
 @app.route('/coronadata',methods=['GET'])
-def coronadata():
+def coronadata_update():
     coronadata.run()
     with open('deagu_corona.json', 'r') as f:
         datasend = json.load(f)
