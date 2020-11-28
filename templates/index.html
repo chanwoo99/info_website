@@ -24,20 +24,40 @@
 
 
 <body>
+<h1 class="display-4" align="center">dgist info</h1>
 
 <div class="container p-4 pt-5 my-3 ">
   <div class="row">
-    <div id="wd0" class="col-sm-2 bg-white border">loading</div>
-    <div id="wd1" class="col-sm-2 bg-white border">loading</div>
-    <div id="wd2" class="col-sm-2 bg-white border">loading</div>
-    <div id="wd3" class="col-sm-2 bg-white border">loading</div>
-    <div id="wd4" class="col-sm-2 bg-white border">loading</div>
-    <div id="wd5" class="col-sm-2 bg-white border">loading</div>
+    <div class="col ">
+      <div id="wd00" align="center">loading</div>
+      <img id=wd_img0 width="30" height=auto style="display: block; margin: 0 auto;"/>
+      <div id="wd0" align="center">loading</div>
 
-
-
+    </div>
+    <div class="col ">
+      <div id="wd11" align="center">loading</div>
+      <img id=wd_img1 width="30" height=auto style="display: block; margin: 0 auto;"/>
+      <div id="wd1" align="center">loading</div>
+    </div>
+    <div class="col">
+      <div id="wd22" align="center">loading</div>
+      <img id=wd_img2 width="30" height=auto style="display: block; margin: 0 auto;"/>
+      <div id="wd2" align="center">loading</div>
+    </div>
+    <div class="col">
+      <div id="wd33" align="center">loading</div>
+      <img id=wd_img3 width="30" height=auto style="display: block; margin: 0 auto;"/>
+      <div id="wd3" align="center">loading</div>
+    </div>
+    <div class="col">
+      <div id="wd44" align="center">loading</div>
+      <img id=wd_img4 width="30" height=auto style="display: block; margin: 0 auto;"/>
+      <div id="wd4" align="center">loading</div>
+    </div>
   </div>
 </div>
+
+
 
 
   <script>
@@ -49,13 +69,46 @@
         if (this.readyState == 4 && this.status == 200) {
           var weather_data=JSON.parse(this.responseText)
 
-        for (i=0;i<6;i++ ){
-          document.getElementById("wd"+i).innerHTML = weather_data[i][0]["date"]+"일 <br>"
-          +weather_data[i][0]["time"]+"시 <br>"+"기온 : "+weather_data[i][0]["T3H"]+"C<br>"+"강수확률 : "+weather_data[i][0]["POP"]+"%<br>"+
-          "강수형태 : " + weather_data[i][0]["PTY"] +"<br>"+
-          "습도 : "+weather_data[i][0]["REH"]+"%<br>"+"하늘상태 : " +  weather_data[i][0]["SKY"]+"<br>"+"풍향 : "+weather_data[i][0]["VEC"]+
-          "<br>"+ "풍속 : "+weather_data[i][0]["WSD"] +"m/s"
+        for (i=0;i<5;i++ ){
+          document.getElementById("wd"+i).innerHTML ="🌡 "+weather_data[i][0]["T3H"]+"°C<br>"+"🌧 "+weather_data[i][0]["POP"]+"%<br>"+
+          "🌢 : "+weather_data[i][0]["REH"]
       }
+
+        for (i=0;i<5;i++ ){
+          document.getElementById("wd"+i+i).innerHTML =weather_data[i][0]["time"].slice(0,2)+"시 <br>"
+      }
+
+        for (i=0;i<5;i++ ){
+          if (weather_data[i][0]["PTY"]==0){
+            if (weather_data[i][0]["SKY"]==1){
+              document.getElementById("wd_img"+i).src="icon/sky_1.svg"
+            }
+            else if (weather_data[i][0]["SKY"]==3){
+              document.getElementById("wd_img"+i).src="icon/sky_3.svg"
+            }
+            else document.getElementById("wd_img"+i).src="icon/sky_4.svg"
+
+          }
+
+          else{
+            if (weather_data[i][0]["PTY"]==1){
+              document.getElementById("wd_img"+i).src="icon/rain_1.svg"
+            }
+            else if (weather_data[i][0]["PTY"]==2 || weather_data[i][0]["PYT"]==3){
+              document.getElementById("wd_img"+i).src="icon/rain_2_3.svg"
+            }
+            else if (weather_data[i][0]["PTY"]==4){
+              document.getElementById("wd_img"+i).src="icon/rain_4.svg"
+            }
+            else if (weather_data[i][0]["PTY"]==5){
+              document.getElementById("wd_img"+i).src="icon/rain_5.svg"
+            }
+            else document.getElementById("wd_img"+i).src="icon/rain_6_7.svg"
+
+          }
+
+      }
+
 
         } else if (this.status == 403){
           alert("forbiden")
@@ -64,6 +117,7 @@
           }
       };
       xhttp.open("GET", "http://13.209.49.120:8080/weather", true);
+  //    xhttp.open("GET", "http://localhost:8080/weather", true);   //테스트
       xhttp.send();
     }
 
