@@ -31,6 +31,8 @@ def run():
             else:
                 baseTime=str(baseDate[i-1].hour)+"00"
             break
+        else:
+            baseTime="2300"
 
 
 
