@@ -21,7 +21,7 @@ def run():
     for i in range(len(baseDate)):
         if dataDate <= baseDate[0]:
             today=str(dataDate.year)+str(dataDate.month)+str(dataDate.day-1)
-            baseTime= 23
+            baseTime= "2300"
             break
 
         elif dataDate <= baseDate[i]:
