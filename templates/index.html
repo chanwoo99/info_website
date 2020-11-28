@@ -68,11 +68,6 @@
       <img id=wd_img3 width="30" height=auto style="display: block; margin: 0 auto;"/>
       <div id="wd3" align="center">loading</div>
     </div>
-    <div class="col">
-      <div id="wd44" align="center">loading</div>
-      <img id=wd_img4 width="30" height=auto style="display: block; margin: 0 auto;"/>
-      <div id="wd4" align="center">loading</div>
-    </div>
   </div>
 </div>
 
@@ -88,16 +83,16 @@
         if (this.readyState == 4 && this.status == 200) {
           var weather_data=JSON.parse(this.responseText)
 
-        for (i=0;i<5;i++ ){
-          document.getElementById("wd"+i).innerHTML ="🌡 "+weather_data[i][0]["T3H"]+"°C<br>"+"🌧 "+weather_data[i][0]["POP"]+"%<br>"+
-          "🌢 : "+weather_data[i][0]["REH"]+"%"
+        for (i=0;i<4;i++ ){
+          document.getElementById("wd"+i).innerHTML ="🌡"+weather_data[i][0]["T3H"]+"°C<br>"+"🌧"+weather_data[i][0]["POP"]+"%<br>"+
+          "💧"+weather_data[i][0]["REH"]+"%"
       }
 
-        for (i=0;i<5;i++ ){
+        for (i=0;i<4;i++ ){
           document.getElementById("wd"+i+i).innerHTML =weather_data[i][0]["time"].slice(0,2)+"시 <br>"
       }
 
-        for (i=0;i<5;i++ ){
+        for (i=0;i<4;i++ ){
           if (weather_data[i][0]["PTY"]==0){
             if (weather_data[i][0]["SKY"]==1){
               document.getElementById("wd_img"+i).src="https://raw.githubusercontent.com/chanwoo99/info_website/0b3e4bf07678b8f8079a3cf4eb9ffd5fedeaf619/templates/icon/sky_1.svg"
@@ -147,7 +142,7 @@
         if (this.readyState == 4 && this.status == 200) {
           var weather_now_data=JSON.parse(this.responseText)
 
-          document.getElementById("wd_now2").innerHTML ="🌡 "+weather_now_data[0][0]["T1H"]+"°C<br>"+"🌢 : "+weather_now_data[0][0]["REH"]+"%"
+          document.getElementById("wd_now2").innerHTML ="🌡"+weather_now_data[0][0]["T1H"]+"°C<br>"+"💧"+weather_now_data[0][0]["REH"]+"%"
 
 
           if (weather_now_data[0][0]["PTY"]==0){
