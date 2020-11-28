@@ -36,7 +36,10 @@
 
     </div>
 
-    <div class="col bg-dark border text-white">
+    <div class="col bg-dark border text-white text-center pt-4">
+
+      <div  align="center">대구 추가 확진자</div>
+      <div id="corona1" align="center">loading</div>
 
     </div>
 
@@ -183,8 +186,32 @@
     }
 
 
+    function coronadata() {
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var corona_data=JSON.parse(this.responseText)
+
+          document.getElementById("corona1").innerHTML =corona_data["number"]+"명"
 
 
+
+
+        } else if (this.status == 403){
+          alert("forbiden")
+        } else if (this.status == 404){
+          alert("404 not found")
+          }
+      };
+      xhttp.open("GET", "http://13.209.49.120:8080/coronadata", true);
+      //xhttp.open("GET", "http://localhost:8080/weather_now", true);   //테스트
+      xhttp.send();
+    }
+
+
+
+    coronadata()
     weather_lod()
     weather_now_lod()
   </script>
