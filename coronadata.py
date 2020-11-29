@@ -36,7 +36,7 @@ def run():
 
 
 
-    return_data={"number":deagu_num}
+    return_data={"number":deagu_num,"date"=str(dataDate)}
 
 
 

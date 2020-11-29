@@ -24,7 +24,22 @@
 
 
 <body>
-<h1 class="display-4" align="center">dgist info</h1>
+
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h1 class="display-4" align="center">dgist info</h1>
+  </div>
+  <div class="col">
+    <a align="center">last update</a>
+    <a id="update_date" align="center">now update</a>
+  </div>
+</div>
+
+
+
+
 <div class="container p-4 pt-2 my-3 ">
   <div class="row">
     <div class="col bg-dark border text-white">
@@ -189,6 +204,7 @@
           var corona_data=JSON.parse(this.responseText)
 
           document.getElementById("corona1").innerHTML =corona_data["number"]+"명"
+          document.getElementById("update_date").innerHTML =corona_data["date"]
 
 
 
