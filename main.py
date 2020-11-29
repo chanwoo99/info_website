@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import json
 
@@ -34,6 +34,10 @@ def coronadata_update():
         datasend = json.load(f)
         return jsonify(datasend)
 
+@app.route('/')
+def hello_name():
+    return render_template('index.html')
+
 
 if __name__ == "__main__":
-    app.run(host = '0.0.0.0' ,port=8000)
+    app.run(host = '0.0.0.0' ,port=80)
