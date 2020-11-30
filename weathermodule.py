@@ -36,7 +36,6 @@ def run():
             baseTime="2300"
 
 
-
     import urllib.request
 
 
@@ -81,8 +80,8 @@ def run():
     with open('weather.json', 'w', encoding='utf-8') as make_file:
         json.dump(data_2, make_file, indent="\t")
 
-
 '''
+
 동네예보 코
 	POP	강수확률	%	8
 	PTY	강수형태	코드값	4
