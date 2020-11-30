@@ -36,7 +36,7 @@ def run():
 
 
 
-
+    dataDate=datetime.datetime.now()
     return_data={"number":deagu_num,"date":str(dataDate.month)+"-"+str(dataDate.day)+" "+str(dataDate.hour)+":"+str(dataDate.minute)}
 
 
