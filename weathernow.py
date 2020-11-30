@@ -20,7 +20,7 @@ def run():
     for i in range(len(baseDate)):
         if dataDate <= baseDate[0]:
             dataDate=dataDate-datetime.timedelta(days=1)
-            today=str(dataDate.year)+str(dataDate.month)+str(dataDate.day-1)
+            today=str(dataDate.year)+str(dataDate.month)+str(dataDate.day)
             baseTime= "2300"
             break
 
