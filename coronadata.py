@@ -7,7 +7,8 @@ import json
 
 def run():
     dataDate=datetime.datetime.now()
-    today=str(dataDate.year)+str(dataDate.month)+str(dataDate.day-1)
+    dataDate=dataDate-datetime.timedelta(days=1)
+    today=str(dataDate.year)+str(dataDate.month)+str(dataDate.day)
 
 
 
