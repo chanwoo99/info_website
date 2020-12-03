@@ -73,15 +73,29 @@
 
     </div>
 
-    <div class="col bg-dark border text-white text-center pt-4">
+    <div class="col bg-dark border text-white text-center pt-2">
 
       <div  align="center">대기환경지수</div>
       <div id="air_condition" align="center">loading</div>
+      <button href="#" data-toggle="popover" class="btn btn-outline-light text-white" title="통합대기환경지수" data-content="좋음 (0~50) ┃ 보통(51~100) ┃ 나쁨(101~250) ┃ 매우나쁨(250~)">자세히</button>
+
+      <script>
+      $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+      });
+      </script>
+
+
+
+
+</div>
 
     </div>
 
   </div>
 </div>
+
+
 <div class="container">
   <div class="row">
     <div class="col ">
@@ -296,7 +310,7 @@
         if (this.readyState == 4 && this.status == 200) {
           var air_data=JSON.parse(this.responseText)
 
-          document.getElementById("air_condition").innerHTML =["grade"]
+          document.getElementById("air_condition").innerHTML =air_data["value"]
 
 
 
@@ -307,7 +321,7 @@
           alert("404 not found")
           }
       };
-      xhttp.open("GET", "http://localhost:8080/air_condition", true);
+      xhttp.open("GET", "http://13.209.49.120:5000/air_condition", true);
       xhttp.send();
     }
 
