@@ -3,7 +3,7 @@ import weathernow
 import coronadata
 
 import threading
-
+import datetime
 
 def update():
     weathermodule.run()
@@ -12,4 +12,9 @@ def update():
 
     threading.Timer(120,update).start()
 
-update()
+while(True):
+    try:
+        update()
+    except:
+        err=str(datetime.datetime.now())
+        print(err+"에 오류 발생")
