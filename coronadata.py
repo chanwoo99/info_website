@@ -10,11 +10,7 @@ def run():
     dataDate=dataDate-datetime.timedelta(days=1)
     today=str(dataDate.year)+(("0"+str(dataDate.month)) if (dataDate.month <10) else (str(dataDate.month)))+(("0"+str(dataDate.day)) if (dataDate.day <10) else (str(dataDate.day)))
 
-    print(today)
 
-run()
-
-'''
 
 
     import urllib.request
@@ -44,4 +40,3 @@ run()
 
     with open('deagu_corona.json', 'w', encoding='utf-8') as make_file:
         json.dump(return_data, make_file, indent="\t")
-'''
