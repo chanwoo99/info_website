@@ -32,7 +32,7 @@ def coronadata_update():
         datasend = json.load(f)
         return jsonify(datasend)
 
-@app.route('/air_condition,methods=['GET'])
+@app.route('/air_condition',methods=['GET'])
 def air_condition_update():
     with open('air_condition.json', 'r') as f:
         datasend = json.load(f)
