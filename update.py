@@ -8,16 +8,11 @@ import datetime
 import traceback
 import logging
 def update():
-    weathermodule.run()
-    weathernow.run()
-    coronadata.run()
-
-
-    threading.Timer(120,update).start()
-
-
-while(True):
     try:
-        update()
+        weathermodule.run()
+        weathernow.run()
+        coronadata.run()
+        threading.Timer(120,update).start()
     except Exception as e:
-        logging.error(traceback.format_exc()) #로깅
+        logging.error(traceback.format_exc())
+        threading.Timer(120,update).start()
