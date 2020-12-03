@@ -21,6 +21,7 @@ def run():
         if dataDate <= baseDate[0]:
             dataDate=dataDate-datetime.timedelta(days=1)
             today=str(dataDate.year)+(("0"+str(dataDate.month)) if (dataDate.month <10) else (str(dataDate.month)))+(("0"+str(dataDate.day)) if (dataDate.day <10) else (str(dataDate.day)))
+            baseTime="2300"
         elif dataDate <= baseDate[i]:
             baseTime=baseDate[i-1].hour
             if baseTime<10:
