@@ -60,7 +60,7 @@
     <div class="col bg-dark border text-white">
 
 
-      <div id="wd_now1" align="center">현풍 현재 날씨</div>
+      <div id="wd_now1" align="center">실시간 날씨</div>
       <img id=wd_now_img width="30" height=auto style="display: block; margin: 0 auto;-webkit-filter: invert(100%);filter: invert(100%);">
       <div id="wd_now2" align="center" >loading</div>
 
@@ -68,8 +68,15 @@
 
     <div class="col bg-dark border text-white text-center pt-4">
 
-      <div  align="center">대구 추가 확진자</div>
+      <div  align="center">대구 코로나 ↑</div>
       <div id="corona1" align="center">loading</div>
+
+    </div>
+
+    <div class="col bg-dark border text-white text-center pt-4">
+
+      <div  align="center">대기환경지수</div>
+      <div id="air_condition" align="center">loading</div>
 
     </div>
 
@@ -282,10 +289,34 @@
     }
 
 
+    function aircondition() {
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var air_data=JSON.parse(this.responseText)
+
+          document.getElementById("air_condition").innerHTML =["grade"]
+
+
+
+
+        } else if (this.status == 403){
+          alert("forbiden")
+        } else if (this.status == 404){
+          alert("404 not found")
+          }
+      };
+      xhttp.open("GET", "http://localhost:8080/air_condition", true);
+      xhttp.send();
+    }
+
+
 
     coronadata()
     weather_lod()
     weather_now_lod()
+    aircondition()
   </script>
 
 

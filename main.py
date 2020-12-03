@@ -7,6 +7,7 @@ import weathernow
 import coronadata
 
 
+
 app = Flask(__name__)
 CORS(app)
 
@@ -28,6 +29,12 @@ def weather_now():
 @app.route('/coronadata',methods=['GET'])
 def coronadata_update():
     with open('deagu_corona.json', 'r') as f:
+        datasend = json.load(f)
+        return jsonify(datasend)
+
+@app.route('/air_condition,methods=['GET'])
+def air_condition_update():
+    with open('air_condition.json', 'r') as f:
         datasend = json.load(f)
         return jsonify(datasend)
 

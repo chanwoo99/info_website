@@ -1,20 +1,23 @@
 import weathermodule
 import weathernow
 import coronadata
+import air_condition
 
 import threading
 import datetime
-
+import traceback
+import logging
 def update():
     weathermodule.run()
     weathernow.run()
     coronadata.run()
 
+
     threading.Timer(120,update).start()
+
 
 while(True):
     try:
         update()
-    except:
-        err=str(datetime.datetime.now())
-        print(err+"에 오류 발생")
+    except Exception as e:
+        logging.error(traceback.format_exc()) #로깅
