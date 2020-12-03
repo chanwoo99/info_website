@@ -34,6 +34,7 @@ def run():
             break
         else:
             baseTime="2300"
+            break
 
 
     import urllib.request
