@@ -16,3 +16,5 @@ def update():
     except Exception as e:
         logging.error(traceback.format_exc())
         threading.Timer(120,update).start()
+
+update()
