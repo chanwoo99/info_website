@@ -1,19 +1,26 @@
 import weathermodule
 import weathernow
 import coronadata
+import air_condition
 
 
 import threading
 import datetime
 import traceback
 import logging
-def update():
+
+
+def update_fuc(module,interval):
     try:
-        weathermodule.run()
-        weathernow.run()
-        coronadata.run()
-        threading.Timer(120,update).start()
-    except Exception as e:
-        logging.error(traceback.format_exc())
-        threading.Timer(120,update).start()
-update()
+        module.run()
+        print("run properly")
+        threading.Timer(interval,module).start()
+    except:
+        print("run error")
+        threading.Timer(interval,module).start()
+
+
+update_fuc(weathermodule,120)
+update_fuc(weathernow,120)
+update_fuc(coronadata,120)
+update_fuc(air_condition,350)

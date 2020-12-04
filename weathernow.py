@@ -27,9 +27,10 @@ def run():
             baseTime=baseDate[i-1].hour
             if baseTime<10:
                 baseTime="0"+str(baseDate[i-1].hour)+"00"
+                break
             else:
                 baseTime=str(baseDate[i-1].hour)+"00"
-            break
+                break
         else:
             baseTime="2300"
             break
@@ -44,6 +45,9 @@ def run():
     data = response.read().decode("utf-8")
     tree=ElementTree(fromstring(data))
     root=tree.getroot()
+
+
+
 
 
     xmlData=[]

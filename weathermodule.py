@@ -29,9 +29,10 @@ def run():
             baseTime=baseDate[i-1].hour
             if baseTime<10:
                 baseTime="0"+str(baseDate[i-1].hour)+"00"
+                break
             else:
                 baseTime=str(baseDate[i-1].hour)+"00"
-            break
+                break
         else:
             baseTime="2300"
             break
@@ -49,6 +50,8 @@ def run():
     root=tree.getroot()
 
 
+
+'''
     xmlData=[]
     for i in root[1][1]:
         tmp_data=[]
@@ -82,7 +85,7 @@ def run():
         json.dump(data_2, make_file, indent="\t")
 
 '''
-
+'''
 동네예보 코
 	POP	강수확률	%	8
 	PTY	강수형태	코드값	4
