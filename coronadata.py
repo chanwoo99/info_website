@@ -24,19 +24,23 @@ def run():
     tree=ElementTree(fromstring(data))
     root=tree.getroot()
 
-    data=root[1][0]
+    if root[0][0].text == "00" or root[0][0].text == "0" :
 
-    for i in data:
-        if i[3].text=="대구":
-            deagu_num=i[6].text
+        data=root[1][0]
 
-
-
-
-    dataDate=datetime.datetime.now()
-    return_data={"number":deagu_num,"date":str(dataDate.month)+"-"+str(dataDate.day)+" "+str(dataDate.hour)+":"+str(dataDate.minute)}
+        for i in data:
+            if i[3].text=="대구":
+                deagu_num=i[6].text
 
 
 
-    with open('deagu_corona.json', 'w', encoding='utf-8') as make_file:
-        json.dump(return_data, make_file, indent="\t")
+
+        dataDate=datetime.datetime.now()
+        return_data={"number":deagu_num,"date":str(dataDate.month)+"-"+str(dataDate.day)+" "+str(dataDate.hour)+":"+str(dataDate.minute)}
+
+
+
+        with open('deagu_corona.json', 'w', encoding='utf-8') as make_file:
+            json.dump(return_data, make_file, indent="\t")
+    else:
+        print("error")

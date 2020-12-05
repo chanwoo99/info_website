@@ -31,7 +31,7 @@ def run():
             else:
                 baseTime=str(baseDate[i-1].hour)+"00"
                 break
-        else:
+        elif dataDate >= baseDate[-1]:
             baseTime="2300"
             break
 
@@ -47,29 +47,32 @@ def run():
     root=tree.getroot()
 
 
+    if root[0][0].text == "00" or root[0][0].text == "0" :
 
 
 
-    xmlData=[]
-    for i in root[1][1]:
-        tmp_data=[]
-        if i[2].text in ["T1H","REH","PTY","VEC","WSD"]:
-            for ii in i:
-                tmp_data.append(ii.text)
+        xmlData=[]
+        for i in root[1][1]:
+            tmp_data=[]
+            if i[2].text in ["T1H","REH","PTY","VEC","WSD"]:
+                for ii in i:
+                    tmp_data.append(ii.text)
 
 
-            xmlData.append(tmp_data)
-
-
-
-
-    data_1={}
-    data_2={}
-    for i in range(len(xmlData)):
-        data_1[xmlData[i][2]]=xmlData[i][5]
-    data_2[0]=[data_1]
+                xmlData.append(tmp_data)
 
 
 
-    with open('weather_now.json', 'w', encoding='utf-8') as make_file:
-        json.dump(data_2, make_file, indent="\t")
+
+        data_1={}
+        data_2={}
+        for i in range(len(xmlData)):
+            data_1[xmlData[i][2]]=xmlData[i][5]
+        data_2[0]=[data_1]
+
+
+
+        with open('weather_now.json', 'w', encoding='utf-8') as make_file:
+            json.dump(data_2, make_file, indent="\t")
+    else:
+        print("error")

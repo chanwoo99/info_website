@@ -17,16 +17,20 @@ def run():
     tree=ElementTree(fromstring(data))
     root=tree.getroot()
 
-    data1=root[1][0][0][6].text
-    data2=root[1][0][0][7].text
+    if root[0][0].text == "00" or root[0][0].text == "0" :
 
-    return_data={"value":data1,"grade":data2}
+        data1=root[1][0][0][6].text
+        data2=root[1][0][0][7].text
 
-
-
-
+        return_data={"value":data1,"grade":data2}
 
 
 
-    with open('air_condition.json', 'w', encoding='utf-8') as make_file:
-        json.dump(return_data, make_file, indent="\t")
+
+
+
+
+        with open('air_condition.json', 'w', encoding='utf-8') as make_file:
+            json.dump(return_data, make_file, indent="\t")
+    else:
+        print("error")

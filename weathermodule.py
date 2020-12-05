@@ -33,13 +33,12 @@ def run():
             else:
                 baseTime=str(baseDate[i-1].hour)+"00"
                 break
-        else:
+        elif dataDate >= baseDate[-1]:
             baseTime="2300"
             break
 
 
     import urllib.request
-
 
     url="http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=rkg5xtO94KPwqpaOkHwkZf0MqU2RcGbvOOXVbeCT%2BBoEbD99hnmXU7nUN9mfXfANBXKyuZ%2BZrhbzJdAtnpnkYg%3D%3D&pageNo=1&numOfRows=1000&dataType=XML&base_date="+today+"&base_time="+baseTime+"&nx=86&ny=87"
 
@@ -49,42 +48,44 @@ def run():
     tree=ElementTree(fromstring(data))
     root=tree.getroot()
 
+    if root[0][0].text == "00" or root[0][0].text == "0" :
 
 
-'''
-    xmlData=[]
-    for i in root[1][1]:
-        tmp_data=[]
-        if i[2].text in ["POP","PTY","REH","SKY","T3H","VEC","WSD"]:
-            for ii in i:
-                tmp_data.append(ii.text)
+        xmlData=[]
+        for i in root[1][1]:
+            tmp_data=[]
+            if i[2].text in ["POP","PTY","REH","SKY","T3H","VEC","WSD"]:
+                for ii in i:
+                    tmp_data.append(ii.text)
 
 
-            xmlData.append(tmp_data)
-
-
-
-    count=0
-    count2=0
-    data_1={}
-    data_2={}
-    for i in range(len(xmlData)):
-        if count>=7:
-            data_1["date"]=xmlData[i-1][3]
-            data_1["time"]=xmlData[i-1][4]
-            data_2[str(count2)]=[data_1]
-            data_1={}
-            count=0
-            count2+=1
-        data_1[xmlData[i][2]]=xmlData[i][5]
-        count+=1
+                xmlData.append(tmp_data)
 
 
 
-    with open('weather.json', 'w', encoding='utf-8') as make_file:
-        json.dump(data_2, make_file, indent="\t")
+        count=0
+        count2=0
+        data_1={}
+        data_2={}
+        for i in range(len(xmlData)):
+            if count>=7:
+                data_1["date"]=xmlData[i-1][3]
+                data_1["time"]=xmlData[i-1][4]
+                data_2[str(count2)]=[data_1]
+                data_1={}
+                count=0
+                count2+=1
+            data_1[xmlData[i][2]]=xmlData[i][5]
+            count+=1
 
-'''
+
+
+        with open('weather.json', 'w', encoding='utf-8') as make_file:
+            json.dump(data_2, make_file, indent="\t")
+
+    else:
+        print("error")
+
 '''
 동네예보 코
 	POP	강수확률	%	8
