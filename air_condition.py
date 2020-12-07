@@ -30,7 +30,7 @@ def run():
 
 
 
-        with open('air_condition.json', 'w', encoding='utf-8') as make_file:
+        with open('/home/ubuntu/info_website/air_condition.json', 'w', encoding='utf-8') as make_file:
             json.dump(return_data, make_file, indent="\t")
     else:
         print("error")

@@ -80,7 +80,7 @@ def run():
 
 
 
-        with open('weather.json', 'w', encoding='utf-8') as make_file:
+        with open('/home/ubuntu/info_website/weather.json', 'w', encoding='utf-8') as make_file:
             json.dump(data_2, make_file, indent="\t")
 
     else:

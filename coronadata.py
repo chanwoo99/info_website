@@ -40,7 +40,7 @@ def run():
 
 
 
-        with open('deagu_corona.json', 'w', encoding='utf-8') as make_file:
+        with open('/home/ubuntu/info_website/deagu_corona.json', 'w', encoding='utf-8') as make_file:
             json.dump(return_data, make_file, indent="\t")
         print("corona run")
     else:
