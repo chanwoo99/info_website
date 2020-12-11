@@ -57,6 +57,15 @@
 
 <div class="container p-4 pt-2">
   <div class="row">
+
+
+    <div class="col bg-dark border text-white text-center pt-4">
+
+      <div  align="center">대구 코로나 ↑</div>
+      <div id="corona1" align="center">loading</div>
+
+    </div>
+
     <div class="col bg-dark border text-white">
 
 
@@ -66,12 +75,7 @@
 
     </div>
 
-    <div class="col bg-dark border text-white text-center pt-4">
 
-      <div  align="center">대구 코로나 ↑</div>
-      <div id="corona1" align="center">loading</div>
-
-    </div>
 
     <div class="col bg-dark border text-white text-center pt-2">
 
@@ -143,10 +147,10 @@
         <div class="card-body text-center">
           <div class="row">
             <div class="col">
-              <button type="button" class="btn btn-dark" onclick="showPopup1();">교직원 식당</button>
+              <button type="button" class="btn btn-dark" onclick="showPopup1();">교직원</button>
             </div>
             <div class="col">
-              <button type="button" class="btn btn-dark" onclick="showPopup2();">연구동 식당</button>
+              <button type="button" class="btn btn-dark" onclick="showPopup2();">연구동</button>
             </div>
             <div class="col">
               <button type="button" class="btn btn-dark" onclick="showPopup3();">학생 식당</button>
@@ -158,12 +162,41 @@
     <div class="card">
       <div class="card-header text-center" style="background-color: #FFFFFF;">
         <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo" style="color:black;">
-          Collapsible Group Item #2
+          학교 웹사이트 바로가기
         </a>
       </div>
       <div id="collapseTwo" class="collapse" data-parent="#accordion">
         <div class="card-body text-center">
-          Lorem ipsum..
+
+          
+          <div class="btn-group">
+            <div class="btn-group">
+              <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+                 홈페이지
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" onclick = "location.href = 'https://www.dgist.ac.kr/kr/intro2020.html'">디지스트</a>
+                <a class="dropdown-item" onclick = "location.href = 'https://www.dgist.ac.kr/college/'">기초학부</a>
+                <a class="dropdown-item" onclick = "location.href = 'https://www.dgist.ac.kr/adm/'">입학</a>
+                <a class="dropdown-item" onclick = "location.href = 'https://dorm.dgist.ac.kr/home/main.jsp'">기숙사</a>
+              </div>
+            </div>
+
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+                 개인별
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" onclick = "location.href = 'https://www.dgist.ac.kr/kr/intro2020.html'">마이디지</a>
+                <a class="dropdown-item" onclick = "location.href = 'https://www.dgist.ac.kr/college/'">학생정보광장</a>
+              </div>
+            </div>
+
+
+            <button type="button" class="btn btn-dark" onclick = "location.href = 'https://mail.dgist.ac.kr/mail/login'">메일</button>
+            <button type="button" class="btn btn-dark" onclick = "location.href = 'https://lms.dgist.ac.kr/'">LMS</button>
+          </div>
         </div>
       </div>
     </div>
@@ -171,12 +204,12 @@
     <div class="card">
       <div class="card-header bg-dark text-center">
         <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree" style="color:white;">
-          Collapsible Group Item #3
+          준비중
         </a>
       </div>
       <div id="collapseThree" class="collapse" data-parent="#accordion">
         <div class="card-body text-center">
-          Lorem ipsum..
+          ~
         </div>
       </div>
     </div>
